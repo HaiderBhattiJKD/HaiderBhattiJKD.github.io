@@ -1,56 +1,58 @@
-<p align="center">
-  <img src="/public/favicon.svg" width="50" alt="Logo" />
-</p>
-<h1 align="center">Personal portfolio</h1>
+# Personal Portfolio Website built with React v16
 
-[![Site preview](/public/site-preview.png)](https://hamishw.com)
+[![Screenshot](/public/social-image.png?raw=true)](https://taniyow.vercel.app)
 
-My design portfolio to showcase a few projects. Built with [Remix](https://remix.run/), [Three.js](https://threejs.org/), and [Framer Motion](https://www.framer.com/motion/). View the [live site](https://hamishw.com) or check out a live version of the [components storybook](https://storybook.hamishw.com).
+[![Website mctan.dev](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://mctan.dev)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/taniyow/taniyow-portfolio-react/blob/master/LICENSE)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/taniyow/taniyow-portfolio-react/graphs/commit-activity)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 
-## Install & run
+A clean and customizable ReactJS portfolio template for fellow developers. Credits to Jo Lienhoop!. View demo at [https://http://vercel.com//](https://taniyow.vercel.app)
 
-Make sure you have nodejs `19.9.0` or higher and npm `9.6.3` or higher installed. Install dependencies with:
+-   built using [React](https://reactjs.org)
+-   bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+-   styled with [Material-UI](https://material-ui.com)
+-   deployed on vercel [Vercel](https://vercel.com)
 
-```bash
-npm install
-```
+Special thanks to [Jo Lienhoop](https://github.com/JoHoop), and [Cody Bennett](https://github.com/CodyJasonBennett) for the inspiration.
 
-Once it's done start up a local server with:
+## Features
 
-```bash
-npm run dev
-```
+-   All of the personal information is populated from the resume.json file following the [JSON Resume](https://jsonresume.org) standard, a community driven open source initiative to create a JSON based standard for resumes. Discover the official schema [here](https://jsonresume.org/schema).
+-   The toggle/switch for the dark mode syncs its state to the local storage.
 
-To view the components storybook:
+#### Coming soon
 
-```bash
-npm run dev:storybook
-```
+-   Two beautiful resume page templates generated based on the data in the resume.json file -- a modern approach of the traditional printed CV.
+-   Rich Google search results using structured data with [json-ld.org/](https://json-ld.org).
 
-## Deployment
+## Customization
 
-I've set up the site using Cloudflare for hosting. Deploy the site to Cloudflare Pages:
+Feel free to fork this project and customize it with your own information and style.
 
-```bash
-npm run deploy
-```
+Refer to the [Material UI docs](https://material-ui.com/customization/theming) for guidance on how to quickly customize the themes, components and colors to suit your tastes.
 
-## Permissions
+If you improve the app in any way a pull request would be very much appreciated ✌️
 
-I'm cool with anyone using the code or parts of the code for their own site, it is open source so people can learn from it and adapt it. However, I would encourage you to modify the theme and components it to make it your own. If you are using the site's design largely unmodified, I'd appreciate being credited as the designer of the website.
+## Available Scripts
 
-I do not give permission to present any of my projects as your own (this is being actively used as my portfolio site and these are my real projects I've worked on).
+In the project directory, you can run:
 
-## FAQs
+### `npm install`
 
-<details>
-  <summary>How do I change the color on the <code>DisplacementSphere</code> (blobby rotating thing in the background).</summary>
-  
-  You'll need to edit the fragment shader. [Check out this issue for more details](https://github.com/HamishMW/portfolio/issues/19#issuecomment-870996615).
-</details>
+to install the dependencies.
 
-<details>
-  <summary>How do I get the contact form to work?</summary>
-  
-  To get the contact form working create an AWS account and set up SES (Simple Email service). Then plug in your details into `.dev.vars.example` and rename it to `.dev.vars`. You'll also need to add these as enviroment variables in the Cloudflare dashboard for it to work in production. Or if you don't mind sending through gmail use [nodemailer](https://nodemailer.com/) instead.
-</details>
+### `npm start`
+
+to run the app in the development mode at [http://localhost:3000](http://localhost:3000)<br />
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
