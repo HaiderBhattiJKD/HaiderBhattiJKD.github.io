@@ -7,7 +7,7 @@ export default function home() {
       <Head>
         <title>John Carlo Devera | Frontend Developer</title>
         <link rel="shortcut icon" href="/favicon.png" />
-        <meta name="description" content="John Carlo Devera | Frontend Developer" />
+        <meta name="description" content="Haider | Frontend Developer" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content="John Carlo Devera | Frontend Developer" />
         <meta name="description" content="Hey! I'm John Carlo Devera, and I'm a Bachelor of Science in Information Technology graduate." />
