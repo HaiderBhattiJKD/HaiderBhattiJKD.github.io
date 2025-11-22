@@ -19,7 +19,7 @@ export function About() {
         </ScrollAnimation>
         <ScrollAnimation animateIn="fadeInLeft" delay={0.1 * 1000}>
           <p>
-          Im a passionate Game Developer with 3+ years of experience working in Unity using C#. I have a strong foundation in creating immersive Gameplay Mechanics, Optimized Performance, and Visually Captivating Experiences.
+          Im a passionate Game Developer with 4+ years of experience working in Unity using C#. I have a strong foundation in creating immersive Gameplay Mechanics, Optimized Performance, and Visually Captivating Experiences.
           </p>
         </ScrollAnimation>
         <ScrollAnimation animateIn="fadeInLeft" delay={0.2 * 1000} style={{ marginTop: "2rem", marginBottom: "2rem" }}>
