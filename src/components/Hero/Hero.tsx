@@ -1,4 +1,3 @@
-import { BrowserRouter } from "react-router-dom"
 import { Container } from "./styles"
 import ScrollAnimation from "react-animate-on-scroll"
 import Illustration from "../../assets/illustration.svg"
@@ -7,13 +6,12 @@ import linkedin from '../../assets/linkedin.svg'
 import githubIcon from '../../assets/github.svg'
 import whatsapp from '../../assets/whatsapp.svg'
 import Hello from '../../assets/Hello.gif'
-import telegram from '../../assets/telegram.svg'
 export function Hero() {
   return (
     <Container id="home">
       <div className="hero-text">
         <ScrollAnimation animateIn="fadeInUp">
-          <p>Hello <img src={Hello} alt="Hello" width="20px"/>, I'm</p>
+          <p>Hello <img src={Hello} alt="Waving hand" width="20px"/>, I'm</p>
         </ScrollAnimation>
         <ScrollAnimation animateIn="fadeInUp" delay={0.2 * 1000}>
           <h1>Haider Ali Bhatti</h1>
@@ -25,9 +23,7 @@ export function Hero() {
           <p className="small-resume">4+ Years of Experience</p>
         </ScrollAnimation>
         <ScrollAnimation animateIn="fadeInUp" delay={0.8 * 1000}>
-          <BrowserRouter>
-            <NavHashLink smooth to="#contact" className="button">Contact</NavHashLink>
-          </BrowserRouter>
+          <NavHashLink smooth to="#contact" className="button">Contact</NavHashLink>
         </ScrollAnimation>
         <ScrollAnimation animateIn="fadeInUp" delay={1 * 1000}>
       <div className="social-media"><a
@@ -35,7 +31,7 @@ export function Hero() {
         target="_blank"
         rel="noreferrer"
       >
-        <img src={linkedin} alt="Linkedin" />
+        <img src={linkedin} alt="LinkedIn" />
       </a>
         <a
           href="https://github.com/HaiderBhattiJKD"
@@ -49,13 +45,13 @@ export function Hero() {
           target="_blank"
           rel="noreferrer"
         >
-          <img src={whatsapp} alt="Whatsapp" />
+          <img src={whatsapp} alt="WhatsApp" />
         </a></div>
         </ScrollAnimation>
       </div>
       <div className="hero-image">
         <ScrollAnimation animateIn="fadeInRight" delay={1 * 1000}>
-          <img src={Illustration} alt="Ilustração" />
+          <img src={Illustration} alt="Developer illustration" />
         </ScrollAnimation>
       </div>
     </Container>
