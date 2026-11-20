@@ -21,13 +21,17 @@ export const Container = styled.div`
       padding: 1rem 2rem;
       border-radius: 1.6rem;
       outline: none;
-      border: none;
-      background:none;
-      border: 1px solid #FFF;
-      color: white;
+      background-color: rgba(var(--bg-rgb), 0.6);
+      border: 1px solid var(--border-strong);
+      color: var(--text);
       font-weight: 600;
+      transition: border-color 0.2s, box-shadow 0.2s;
       &::placeholder{
-        color: #FFF;
+        color: var(--text-dim);
+      }
+      &:focus{
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.3rem rgba(var(--primary-rgb), 0.2), 0 0 1.6rem rgba(var(--primary-rgb), 0.35);
       }
     }
 
@@ -74,6 +78,6 @@ export const ContainerSucces = styled.div`
     margin-top: 0.8rem;
     text-transform: uppercase;
     text-align: center;
-    color: #fbfbfb;
+    color: var(--on-primary);
   }
 `

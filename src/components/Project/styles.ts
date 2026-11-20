@@ -19,8 +19,8 @@ export const Container = styled.section`
 
     .project{
       position: relative;
-      background-color: #2b2b2b;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background-color: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 1.2rem;
       overflow: hidden;
       /* --rx/--ry are set by the mouse (useTilt) */
@@ -29,7 +29,7 @@ export const Container = styled.section`
       display: flex;
       flex-direction: column;
       height: 100%;
-      color: #FFF;
+      color: var(--text);
 
       /* light glare that follows the mouse */
       &::after{
@@ -46,7 +46,7 @@ export const Container = styled.section`
       &:hover{
         --lift: -0.6rem;
         border-color: var(--green);
-        box-shadow: 0 1.6rem 3rem rgba(0, 0, 0, 0.35), 0 0 2.4rem rgba(35, 206, 107, 0.2);
+        box-shadow: 0 1.6rem 3rem rgba(0, 0, 0, 0.35), 0 0 2.4rem rgba(var(--primary-rgb), 0.2);
 
         &::after{
           opacity: 1;
@@ -140,7 +140,7 @@ export const Container = styled.section`
         font-weight: 500;
         padding: 0.4rem 1rem;
         border-radius: 2rem;
-        background-color: rgba(35, 206, 107, 0.15);
+        background-color: rgba(var(--primary-rgb), 0.15);
         color: var(--green);
       }
     }
@@ -171,7 +171,7 @@ export const Container = styled.section`
       justify-content: space-between;
       gap: 1rem;
       padding: 1.4rem 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid var(--border);
 
       .tech-list{
         display: flex;

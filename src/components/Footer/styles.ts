@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 
 export const Container = styled.footer`
-  background-color: #2b2b2b;
+  background-color: rgba(var(--bg-rgb), 0.85);
+  border-top: 1px solid rgba(var(--primary-rgb), 0.35);
+  box-shadow: 0 -1rem 3rem rgba(var(--primary-rgb), 0.08);
   padding: 3rem 15rem;
   margin-top: 10rem;
   display: flex;

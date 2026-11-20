@@ -1,15 +1,9 @@
 import { Container, ContainerSucces } from './styles'
 import { useForm, ValidationError } from '@formspree/react'
-import { useEffect } from 'react'
-import { unlockAchievement } from '../../fx/Achievements'
 
 
 export function Form() {
   const [state, handleSubmit] = useForm('xknkpqry')
-
-  useEffect(() => {
-    if (state.succeeded) unlockAchievement('message')
-  }, [state.succeeded])
 
   if (state.succeeded) {
     return (

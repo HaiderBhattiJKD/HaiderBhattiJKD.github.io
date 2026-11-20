@@ -7,7 +7,7 @@ export const Container = styled.header`
   align-items: center;
   padding: 1.8rem 10rem;
   
-  background-color: #21212150;
+  background-color: rgba(var(--bg-rgb), 0.75);
   
   backdrop-filter: blur(6px);
 
@@ -22,7 +22,7 @@ export const Container = styled.header`
     align-items: center;
     gap: 1.8rem;
     a{
-      color: #FFFF;
+      color: var(--text);
       padding: 0.6rem;
       font-family: 'Red Hat Display', sans-serif;
       font-weight: 500;
@@ -48,7 +48,7 @@ export const Container = styled.header`
   .menu{
     width: 2rem;
     height: 0.2rem;
-    background: #FFFF;
+    background: var(--text);
     position: relative;
     cursor: pointer;
     display: none;
@@ -95,7 +95,7 @@ export const Container = styled.header`
     position: absolute;
     width: 100%;
     height: 0.2rem;
-    background: #FFFF;
+    background: var(--text);
     cursor: pointer;
     transition: .6s;
   }
@@ -111,7 +111,7 @@ export const Container = styled.header`
   }
 
   input[type=checkbox]:focus-visible + label {
-    outline: 2px solid #FFFF;
+    outline: 2px solid var(--text);
     outline-offset: 2px;
   }
 
@@ -169,23 +169,30 @@ export const Container = styled.header`
     white-space: nowrap;
   }
 
-  /* XP bar: fills along the bottom edge of the header as you scroll */
+  /* XP bar: a segmented bar along the bottom edge of the header that fills as you scroll */
   .xp-bar{
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
-    height: 0.3rem;
-    background-color: rgba(128, 128, 128, 0.2);
+    bottom: -0.2rem;
+    height: 0.4rem;
     pointer-events: none;
+    /* glow on the wrapper so the segment mask below doesn't clip it */
+    filter: drop-shadow(0 0 0.4rem rgba(var(--primary-rgb), 0.8));
+  }
+
+  .xp-track{
+    position: absolute;
+    inset: 0;
+    background-color: rgba(var(--primary-rgb), 0.12);
   }
 
   .xp-fill{
-    height: 100%;
-    background: linear-gradient(90deg, var(--green), #7dffb0, var(--pink));
-    box-shadow: 0 0 0.8rem rgba(35, 206, 107, 0.7);
-    transform: scaleX(0);
-    transform-origin: left;
+    position: absolute;
+    inset: 0;
+    /* gradient spans the whole page width; clip-path (set from XpBar) reveals it */
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    clip-path: inset(0 100% 0 0);
   }
 
   @media (max-width: 1280px){
@@ -212,14 +219,19 @@ export const Container = styled.header`
       position: fixed;
       width: 100vw;
       height: 100vh;
-      background: var(--blue);
       top: 0;
       left: 0;
       transition: opacity 0.25s;
-      background-color: var(--green);
+      background:
+        radial-gradient(50rem 30rem at 50% 0%, rgba(var(--secondary-rgb), 0.18), transparent 70%),
+        rgba(var(--bg-rgb), 0.97);
 
-      a.button{
-        background-color: var(--pink);
+      a{
+        font-size: 2rem;
+        &:not(.button):hover{
+          color: var(--primary);
+          filter: none;
+        }
       }
 
       &.active{

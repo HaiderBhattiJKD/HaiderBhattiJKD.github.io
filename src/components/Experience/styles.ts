@@ -16,29 +16,27 @@ export const Container = styled.section`
     margin: 0 auto;
     padding-left: 4rem;
 
-    /* empty track */
-    &::before{
+    /* segmented line, like a vertical health bar */
+    &::before, &::after{
       content: "";
       position: absolute;
-      left: 0.9rem;
+      left: 0.8rem;
       top: 0.6rem;
       bottom: 0.6rem;
-      width: 0.2rem;
-      background-color: rgba(128, 128, 128, 0.25);
+      width: 0.4rem;
+      -webkit-mask: repeating-linear-gradient(180deg, #000 0 1rem, transparent 1rem 1.4rem);
+      mask: repeating-linear-gradient(180deg, #000 0 1rem, transparent 1rem 1.4rem);
     }
 
-    /* glowing fill that grows as you scroll (--fill is 0 to 1) */
+    /* empty slots */
+    &::before{
+      background-color: rgba(var(--primary-rgb), 0.15);
+    }
+
+    /* fill that grows as you scroll (--fill is 0 to 1) */
     &::after{
-      content: "";
-      position: absolute;
-      left: 0.9rem;
-      top: 0.6rem;
-      bottom: 0.6rem;
-      width: 0.2rem;
-      background: linear-gradient(var(--green), #7dffb0);
-      box-shadow: 0 0 0.8rem rgba(35, 206, 107, 0.8);
-      transform: scaleY(var(--fill, 0));
-      transform-origin: top;
+      background: linear-gradient(var(--primary), var(--secondary));
+      clip-path: inset(0 0 calc((1 - var(--fill, 0)) * 100%) 0);
     }
   }
 
@@ -92,7 +90,8 @@ export const Container = styled.section`
     }
 
     &.current.unlocked::before{
-      background-color: var(--green);
+      background-color: var(--secondary);
+      border-color: var(--secondary);
       animation: gx-dot-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), gx-dot-pulse 2s 0.5s ease-out infinite;
     }
 
@@ -105,8 +104,8 @@ export const Container = styled.section`
     }
 
     &.education .period{
-      background-color: rgba(1, 111, 185, 0.25);
-      color: #5fb4f0;
+      background-color: rgba(var(--tertiary-rgb), 0.2);
+      color: var(--tertiary);
     }
   }
 
@@ -122,15 +121,15 @@ export const Container = styled.section`
   }
 
   @keyframes gx-dot-pulse{
-    0%{ box-shadow: 0 0 0 0 rgba(35, 206, 107, 0.6); }
-    100%{ box-shadow: 0 0 0 1.2rem rgba(35, 206, 107, 0); }
+    0%{ box-shadow: 0 0 0 0 rgba(var(--secondary-rgb), 0.7); }
+    100%{ box-shadow: 0 0 0 1.2rem rgba(var(--secondary-rgb), 0); }
   }
 
   .card{
     position: relative;
-    background-color: #2b2b2b;
-    color: #FFF;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background-color: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
     border-radius: 1.2rem;
     padding: 2.4rem;
     /* --rx/--ry are set by the mouse (useTilt) */
@@ -150,7 +149,7 @@ export const Container = styled.section`
 
     &:hover{
       border-color: var(--green);
-      box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.3), 0 0 2rem rgba(35, 206, 107, 0.15);
+      box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.3), 0 0 2rem rgba(var(--primary-rgb), 0.15);
 
       &::after{
         opacity: 1;
@@ -163,7 +162,7 @@ export const Container = styled.section`
       font-weight: 500;
       padding: 0.4rem 1rem;
       border-radius: 2rem;
-      background-color: rgba(35, 206, 107, 0.15);
+      background-color: rgba(var(--primary-rgb), 0.15);
       color: var(--green);
       margin-bottom: 1rem;
     }
@@ -239,7 +238,7 @@ export const Container = styled.section`
 
     li{
       font-size: 1.3rem;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid var(--border-strong);
       border-radius: 2rem;
       padding: 0.3rem 1rem;
 
@@ -258,7 +257,7 @@ export const Container = styled.section`
     gap: 1.2rem;
     margin-top: 1.6rem;
     padding-top: 1.4rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--border);
     font-size: 1.4rem;
     opacity: 0.6;
   }

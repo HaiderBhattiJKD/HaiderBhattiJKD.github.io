@@ -49,7 +49,7 @@ export function RevealText({ text, delay = 0, stagger = 40, underline = false }:
         <span
           className="gx-underline"
           aria-hidden="true"
-          style={{ animationDelay: `${barDelay}ms` }}
+          style={{ "--bar-delay": `${barDelay}ms` } as CSSProperties}
         />
       )}
     </span>

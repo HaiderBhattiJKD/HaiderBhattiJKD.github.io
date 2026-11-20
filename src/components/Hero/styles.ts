@@ -15,7 +15,8 @@ export const Container = styled.section`
     }
 
     h3{
-      color:var(--green);
+      color: var(--primary);
+      text-shadow: var(--heading-glow);
       margin: 1rem 0;
     }
 

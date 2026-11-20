@@ -1,59 +1,70 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+  /* ---------- Neon Arcade theme ----------
+     Every colour on the site comes from these variables. The *-rgb versions
+     are for see-through glows: rgba(var(--primary-rgb), 0.3). */
   :root{
-    --pink: #E31F71;
-    --black: #212121;
-    --green: #23ce6b;
-    --blue: #016fb9;
+    --bg: #0b0b1a;
+    --bg-rgb: 11, 11, 26;
+    --surface: #15152e;
+    --surface-2: #1d1d3d;
+    --text: #ececff;
+    --text-dim: rgba(236, 236, 255, 0.65);
+    --border: rgba(0, 229, 255, 0.12);
+    --border-strong: rgba(236, 236, 255, 0.35);
+
+    --primary: #00e5ff;        /* cyan: buttons, links, active things */
+    --primary-rgb: 0, 229, 255;
+    --primary-shade: #0090a8;  /* the "side" of arcade buttons */
+    --on-primary: #0b0b1a;     /* text on cyan */
+    --secondary: #ff2bd6;      /* magenta: highlights, current job */
+    --secondary-rgb: 255, 43, 214;
+    --accent: #ffd23f;         /* yellow: spare highlight colour */
+    --accent-rgb: 255, 210, 63;
+    --tertiary: #8b5cff;       /* purple: education */
+    --tertiary-rgb: 139, 92, 255;
+
+    --heading-glow: 0 0 1.6rem rgba(var(--primary-rgb), 0.45);
+    --card-glow: 0 0 2.4rem rgba(var(--primary-rgb), 0.25);
+
+    /* older names still used around the code */
+    --green: var(--primary);
+    --pink: var(--secondary);
+    --black: var(--bg);
+    --blue: var(--tertiary);
+
     scroll-padding-top: 10rem;
+    scrollbar-color: var(--primary) var(--bg);
 
+    /* light mode: same neon family, darker so it reads on a light background */
     &.light{
-
-      body{
-        transition: 0.5s;
-        background-color: #f5f5f5;
-        color: var(--black);
-      }
-
-      .logo{
-        color: var(--black);
-      }
-
-      header.header-fixed{
-        transition: 0.5s;
-        background-color: #f5f5f550;
-        a{
-          transition: 0.5s;
-          color: black;
-        }
-        .menu,.menu:before, .menu:after{
-          background-color: var(--black); 
-        }
-        .menu.active{
-          background-color: rgba(555,555,555,0);
-        }
-      }
-
-      footer.footer{
-        transition: 0.5s;
-        background-color: rgba(0,0,0,0.1);
-        color: var(--black);
-      }
-
-      form{
-        input,textarea{
-          transition: 0.5s;
-          border: solid 1px var(--black);
-          color: var(--black);
-          &::placeholder{
-            transition: 0.5s;
-            color: var(--black);
-          }
-        }
-      }
-
+      --bg: #eef0fa;
+      --bg-rgb: 238, 240, 250;
+      --surface: #ffffff;
+      --surface-2: #f4f5fc;
+      --text: #14142b;
+      --text-dim: rgba(20, 20, 43, 0.65);
+      --border: rgba(20, 20, 43, 0.1);
+      --border-strong: rgba(20, 20, 43, 0.3);
+      --primary: #0088a8;
+      --primary-rgb: 0, 136, 168;
+      --primary-shade: #005f75;
+      --on-primary: #ffffff;
+      --secondary: #c4129a;
+      --secondary-rgb: 196, 18, 154;
+      --accent: #b88a00;
+      --accent-rgb: 184, 138, 0;
+      --tertiary: #6a3fe0;
+      --tertiary-rgb: 106, 63, 224;
+      --heading-glow: none;
+      --card-glow: 0 1rem 2.4rem rgba(20, 20, 43, 0.12);
     }
+  }
+
+  ::selection{
+    background-color: var(--secondary);
+    color: #fff;
   }
 
   ul, li {
@@ -76,8 +87,20 @@ export const GlobalStyle = createGlobalStyle`
   body{
     font-size: 1.6rem;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--black);
-    color: #FFFF;
+    color: var(--text);
+    /* neon haze in two corners over a faint arcade grid */
+    background:
+      radial-gradient(70rem 45rem at 90% 0%, rgba(var(--secondary-rgb), 0.14), transparent 60%),
+      radial-gradient(70rem 45rem at 0% 100%, rgba(var(--primary-rgb), 0.12), transparent 60%),
+      linear-gradient(rgba(var(--primary-rgb), 0.035) 1px, transparent 1px) 0 0 / 4rem 4rem,
+      linear-gradient(90deg, rgba(var(--primary-rgb), 0.035) 1px, transparent 1px) 0 0 / 4rem 4rem,
+      var(--bg);
+    background-attachment: fixed;
+    transition: color 0.4s, background-color 0.4s;
+  }
+
+  h1, h2{
+    text-shadow: var(--heading-glow);
   }
 
   body, input, textarea, button{
@@ -92,8 +115,8 @@ export const GlobalStyle = createGlobalStyle`
   button, .button{
     border: none;
     cursor: pointer;
-    background-color: var(--green);
-    color: #FFFF;
+    background-color: var(--primary);
+    color: var(--on-primary);
     border-radius: 2rem;
     font-weight: 500;
     transition: filter 0.25s;
@@ -110,7 +133,10 @@ export const GlobalStyle = createGlobalStyle`
 
   .logo{
     font-size: 3rem;
-    color: #FFFF;
+    color: var(--text);
+    span:last-child{
+      color: var(--primary);
+    }
     // &::first-letter{
     //   color: var(--green);
     // }
@@ -157,26 +183,49 @@ export const GlobalStyle = createGlobalStyle`
     100%{ opacity: 1; transform: none; }
   }
 
-  /* loading bar that fills under a heading once its letters land */
-  .gx-underline{
-    display: block;
-    height: 0.4rem;
-    margin-top: 0.8rem;
-    border-radius: 0.2rem;
-    background: linear-gradient(90deg, var(--green), #7dffb0, var(--pink));
-    box-shadow: 0 0 0.8rem rgba(35, 206, 107, 0.5);
-    transform: scaleX(0);
-    transform-origin: left;
+  /* segmented, health-bar style fill. Put it on an element and give that
+     element a background; the mask cuts it into blocks with small gaps. */
+  .gx-segments{
+    -webkit-mask: repeating-linear-gradient(90deg, #000 0 1rem, transparent 1rem 1.3rem);
+    mask: repeating-linear-gradient(90deg, #000 0 1rem, transparent 1rem 1.3rem);
   }
 
-  .gx-reveal.play .gx-underline{
-    animation: gx-bar-fill 0.7s cubic-bezier(0.65, 0, 0.35, 1) both;
+  /* bar under a heading: empty blocks, then filled block by block once the letters land */
+  .gx-underline{
+    position: relative;
+    display: block;
+    height: 0.7rem;
+    margin-top: 1rem;
+    /* the glow sits on the wrapper so the segment mask doesn't cut it off */
+    filter: drop-shadow(0 0 0.5rem rgba(var(--primary-rgb), 0.7));
+
+    &::before, &::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      -webkit-mask: repeating-linear-gradient(90deg, #000 0 1rem, transparent 1rem 1.3rem);
+      mask: repeating-linear-gradient(90deg, #000 0 1rem, transparent 1rem 1.3rem);
+    }
+
+    /* empty slots */
+    &::before{
+      background-color: rgba(var(--primary-rgb), 0.15);
+    }
+
+    /* the fill */
+    &::after{
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      clip-path: inset(0 100% 0 0);
+    }
+  }
+
+  .gx-reveal.play .gx-underline::after{
+    animation: gx-bar-fill 0.8s steps(8, end) var(--bar-delay, 0ms) both;
   }
 
   @keyframes gx-bar-fill{
-    0%{ transform: scaleX(0); }
-    70%{ transform: scaleX(1.03); }
-    100%{ transform: scaleX(1); }
+    from{ clip-path: inset(0 100% 0 0); }
+    to{ clip-path: inset(0 0 0 0); }
   }
 
   .gx-cursor{
@@ -198,16 +247,17 @@ export const GlobalStyle = createGlobalStyle`
   /* ---------- arcade buttons: they press down like a real button ---------- */
   .button{
     position: relative;
-    box-shadow: 0 0.5rem 0 rgba(0, 0, 0, 0.35);
+    font-weight: 700;
+    box-shadow: 0 0.5rem 0 var(--primary-shade), 0 0 1.6rem rgba(var(--primary-rgb), 0.35);
     transition: filter 0.2s, transform 0.1s, box-shadow 0.1s;
     &:hover{
       filter: brightness(1.1);
       transform: translateY(-0.2rem);
-      box-shadow: 0 0.7rem 0 rgba(0, 0, 0, 0.35);
+      box-shadow: 0 0.7rem 0 var(--primary-shade), 0 0 2.4rem rgba(var(--primary-rgb), 0.55);
     }
     &:active{
       transform: translateY(0.5rem);
-      box-shadow: 0 0 0 rgba(0, 0, 0, 0.35);
+      box-shadow: 0 0 0 var(--primary-shade), 0 0 1.2rem rgba(var(--primary-rgb), 0.35);
     }
   }
 
