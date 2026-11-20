@@ -32,23 +32,23 @@ export function About() {
           <h3>Here are my main skills:</h3>
         </ScrollAnimation>
         <div className="hard-skills">
-          <div className="hability">
-            <ScrollAnimation animateIn="fadeInUp" delay={0.10 * 1000}>
+          <div className="ability">
+            <ScrollAnimation animateIn="fadeInUp" delay={0.1 * 1000}>
               <img src={unityIcon} alt="Unity" />
             </ScrollAnimation>
           </div>
-          <div className="hability">
-            <ScrollAnimation animateIn="fadeInUp" delay={0.12 * 1000}>
+          <div className="ability">
+            <ScrollAnimation animateIn="fadeInUp" delay={0.15 * 1000}>
               <img src={cSharpIcon} alt="C#" />
             </ScrollAnimation>
           </div>
-          <div className="hability">
-            <ScrollAnimation animateIn="fadeInUp" delay={0.13 * 1000}>
+          <div className="ability">
+            <ScrollAnimation animateIn="fadeInUp" delay={0.2 * 1000}>
               <img src={unrealIcon} alt="Unreal Engine" />
             </ScrollAnimation>
           </div>
-          <div className="hability">
-            <ScrollAnimation animateIn="fadeInUp" delay={0.14 * 1000}>
+          <div className="ability">
+            <ScrollAnimation animateIn="fadeInUp" delay={0.25 * 1000}>
               <img src={cPlusPlusIcon} alt="C++" />
             </ScrollAnimation>
           </div>

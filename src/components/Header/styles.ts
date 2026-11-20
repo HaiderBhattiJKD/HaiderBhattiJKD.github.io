@@ -52,6 +52,18 @@ export const Container = styled.header`
     position: relative;
     cursor: pointer;
     display: none;
+    padding: 0;
+    border-radius: 0;
+    /* keep the button's clickable area larger than the thin bar */
+    box-sizing: content-box;
+    background-clip: content-box;
+    border: 0.9rem solid transparent;
+    margin: -0.9rem;
+
+    &:focus-visible{
+      outline: 2px solid var(--green);
+      outline-offset: 0.4rem;
+    }
 
     &:before{
       bottom: 0.5rem;
@@ -89,11 +101,18 @@ export const Container = styled.header`
   }
 
 
+  /* visually hidden, but still focusable with the keyboard */
   input[type=checkbox] {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-    outline: none;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  input[type=checkbox]:focus-visible + label {
+    outline: 2px solid #FFFF;
+    outline-offset: 2px;
   }
 
   label {

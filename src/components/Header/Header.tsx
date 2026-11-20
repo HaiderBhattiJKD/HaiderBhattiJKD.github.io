@@ -1,13 +1,31 @@
 import { Container } from './styles'
 import { NavHashLink, HashLink } from 'react-router-hash-link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Resume from '../../assets/Resume.pdf'
+
+const THEME_KEY = 'theme'
+
+function getSavedTheme(): boolean {
+  try {
+    return localStorage.getItem(THEME_KEY) === 'light'
+  } catch {
+    return false
+  }
+}
+
 export function Header() {
   const [isActive, setActive] = useState(false)
-  function toggleTheme() {
-    let html = document.getElementsByTagName('html')[0]
-    html.classList.toggle('light')
-  }
+  const [isLight, setLight] = useState(getSavedTheme)
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('light', isLight)
+    try {
+      localStorage.setItem(THEME_KEY, isLight ? 'light' : 'dark')
+    } catch {
+      // Storage can be blocked (e.g. private mode); the theme still works for this visit.
+    }
+  }, [isLight])
+
   function closeMenu() {
     setActive(false)
   }
@@ -18,14 +36,15 @@ export function Header() {
         <span>{" Bhatti/>"}</span>
       </HashLink>
       <input
-        onChange={toggleTheme}
+        onChange={(e) => setLight(e.target.checked)}
+        checked={isLight}
         className="container_toggle"
         type="checkbox"
         id="switch"
         name="mode"
       />
-      <label htmlFor="switch">Toggle</label>
-      <nav className={isActive ? 'active' : ''}>
+      <label htmlFor="switch">Light mode</label>
+      <nav id="main-nav" className={isActive ? 'active' : ''}>
         <NavHashLink smooth to="#home" onClick={closeMenu}>
           Home
         </NavHashLink>
@@ -42,15 +61,16 @@ export function Header() {
           Resume
         </a>
       </nav>
-      <div
-        aria-expanded={isActive ? 'true' : 'false'}
-        aria-haspopup="true"
+      <button
+        type="button"
+        aria-expanded={isActive}
+        aria-controls="main-nav"
         aria-label={isActive ? 'Close menu' : 'Open menu'}
         className={isActive ? 'menu active' : 'menu'}
         onClick={() => {
           setActive(!isActive)
         }}
-      ></div>
+      ></button>
     </Container>
   )
 }

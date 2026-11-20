@@ -30,10 +30,9 @@ The site opens at http://localhost:3000.
 
 ## Deploying
 
-The site is served from the `gh-pages` branch. To publish a new version:
+The site is served from the `gh-pages` branch. To publish a new version (this builds the site first):
 
 ```bash
-npm run build
 npm run deploy
 ```
 
