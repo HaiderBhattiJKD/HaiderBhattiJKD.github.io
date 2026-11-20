@@ -2,6 +2,7 @@ import { Container } from './styles'
 import { NavHashLink, HashLink } from 'react-router-hash-link'
 import { useEffect, useState } from 'react'
 import Resume from '../../assets/Resume.pdf'
+import { XpBar } from '../../fx/XpBar'
 
 const THEME_KEY = 'theme'
 
@@ -51,8 +52,11 @@ export function Header() {
         <NavHashLink smooth to="#about" onClick={closeMenu}>
           About me
         </NavHashLink>
+        <NavHashLink smooth to="#experience" onClick={closeMenu}>
+          Experience
+        </NavHashLink>
         <NavHashLink smooth to="#project" onClick={closeMenu}>
-          Projects
+          Games
         </NavHashLink>
         <NavHashLink smooth to="#contact" onClick={closeMenu}>
           Contact
@@ -71,6 +75,7 @@ export function Header() {
           setActive(!isActive)
         }}
       ></button>
+      <XpBar />
     </Container>
   )
 }

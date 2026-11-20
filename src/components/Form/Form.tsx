@@ -1,16 +1,23 @@
 import { Container, ContainerSucces } from './styles'
 import { useForm, ValidationError } from '@formspree/react'
+import { useEffect } from 'react'
+import { unlockAchievement } from '../../fx/Achievements'
 
 
 export function Form() {
   const [state, handleSubmit] = useForm('xknkpqry')
 
+  useEffect(() => {
+    if (state.succeeded) unlockAchievement('message')
+  }, [state.succeeded])
 
   if (state.succeeded) {
     return (
       <ContainerSucces>
+        <p className="quest">Quest complete!</p>
         <h3>Thanks for getting in touch!</h3>
         <button
+          className="button"
           onClick={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' })
           }}
@@ -46,7 +53,7 @@ export function Form() {
           field="message"
           errors={state.errors}
         />
-        <button type="submit" disabled={state.submitting}>
+        <button type="submit" className="button" disabled={state.submitting}>
           Submit
         </button>
       </form>

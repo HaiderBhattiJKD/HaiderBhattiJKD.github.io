@@ -60,6 +60,14 @@ export const ContainerSucces = styled.div`
   margin-top: 10rem;
   text-align: center;
 
+  .quest{
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.6rem;
+    color: var(--green);
+    margin-bottom: 1.6rem;
+    animation: gx-level-up 0.6s ease-out;
+  }
+
   button{
     border-radius: 0.6rem;
     padding: 1rem;

@@ -20,6 +20,9 @@ export const Container = styled.section`
 
     img{
       width: 3.4rem;
+      &:hover{
+        animation: gx-jump 0.5s ease-out;
+      }
     }
   }
 

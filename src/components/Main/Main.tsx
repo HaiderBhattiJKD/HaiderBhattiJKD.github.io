@@ -4,6 +4,7 @@ import { Hero } from "../Hero/Hero";
 import { About } from "../About/About";
 import { Contact } from "../Contact/Contact";
 import { Project } from "../Project/Project";
+import { Experience } from "../Experience/Experience";
 import cSharpIcon from "../../assets/C#.png";
 import unityIcon from "../../assets/Unity.png";
 import vSCodeIcon from "../../assets/VSCode.png";
@@ -222,6 +223,7 @@ export function Main() {
       />
       <Hero></Hero>
       <About></About>
+      <Experience></Experience>
       <Project></Project>
       <Contact></Contact>
     </Container>

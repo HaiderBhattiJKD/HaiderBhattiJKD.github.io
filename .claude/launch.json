@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\npm.cmd",
+      "runtimeArgs": ["start"],
+      "env": { "BROWSER": "none", "PATH": "C:\\Program Files\\nodejs;${env:PATH}" },
+      "port": 3000
+    }
+  ]
+}

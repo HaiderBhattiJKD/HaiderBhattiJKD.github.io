@@ -1,95 +1,143 @@
-import { Container } from "./styles";
-import playStoreIcon from "../../assets/PlayStoreIcon.svg"
+import { useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import ScrollAnimation from "react-animate-on-scroll";
-import rider3dIcon from "../../assets/Rider3D.png"
-import bikeStuntIcon from "../../assets/BikeStunt.png"
-import urbanBusIcon from "../../assets/UBS.png"
-import springLancerIcon from "../../assets/Lancer.png"
-import bikeRacingMasterIcon from "../../assets/BRM.png"
-import formulaRacingIcon from "../../assets/F1Racing.png"
-import animalBikeStuntIcon from "../../assets/AnimalBikeStunt.png"
+import { Container } from "./styles";
+import playStoreIcon from "../../assets/PlayStoreIcon.svg";
+import { projects, GameProject } from "../../data/projects";
+import { prefersReducedMotion, useTilt } from "../../fx/motion";
+import { RevealText } from "../../fx/RevealText";
 
-const projects = [
-  {
-    title: "Rider 3D",
-    icon: rider3dIcon,
-    link: "https://play.google.com/store/apps/details?id=com.ffgames.motoercycle.traffic.racer.bikegames.rider.motobikeracing3d&hl=en",
-    description: "Highway Bike Racing - Experience the rush as you weave through traffic, hit insane speeds with NOS, and push your limits to dominate the highway in this adrenaline-packed 3D bike racing game!",
-    tech: ["Unity 3D", "C#"],
-  },
-  {
-    title: "Bike Stunt Legends",
-    icon: bikeStuntIcon,
-    link: "https://play.google.com/store/apps/details?id=com.kn.bikestunt3.racing.driving.games&hl=en",
-    description: "Extreme Stunt Rider - Master daring stunts, soar through the air, and conquer extreme tracks as you push your skills to the limit in this action-packed 3D bike stunt game!",
-    tech: ["Unity 3D", "C#"],
-  },
-  {
-    title: "Urban Bus Simulator",
-    icon: urbanBusIcon,
-    link: "https://play.google.com/store/apps/details?id=com.ffg.offline.games.driving.city.bus.simulator.busgames&hl=en",
-    description: "Urban Bus Simulator - Navigate busy city streets, manage realistic traffic, and keep passengers on schedule as you experience the life of a pro bus driver in this immersive urban simulation!",
-    tech: ["Unity 3D", "C#"],
-  },
-  {
-    title: "Lancer Strike",
-    icon: springLancerIcon,
-    link: "https://play.google.com/store/apps/details?id=com.tf.springbolt.smash&hl=en",
-    description: "Lancer Strike - Aim, throw, and smash your way through enemies in this fast-paced spear-flinging action game! Master precision shots, break obstacles, and conquer challenging levels as you rise to become the ultimate lancer warrior.",
-    tech: ["Unity 3D", "C#"],
-  },
-  {
-    title: "Bike Racing Master",
-    icon: bikeRacingMasterIcon,
-    link: "https://play.google.com/store/apps/details?id=com.tf.ride.master.bike.race.game&hl=en",
-    description: "Bike Racing Master - Hit the throttle, soar off ramps, dodge wild obstacles and race your way to victory! Unlock high-performance bikes, master challenging tracks and feel the rush of speed in this addictive stunt-racing adventure.",
-    tech: ["Unity 3D", "C#"],
-  },
-  {
-    title: "Formula Car Racing Pro",
-    icon: formulaRacingIcon,
-    link: "https://play.google.com/store/apps/details?id=com.tf.formularacing.pro.drivinggame&hl=en",
-    description: "Formula Racing Pro - Strap in, hit the throttle, and dominate the asphalt in this adrenaline-charged open–wheel racing adventure! Pilot ultra-fast formula machines, navigate sharp corners at break-neck speed, and race past rivals to become the ultimate champion on the world’s deadliest circuits.",
-    tech: ["Unity 3D", "C#"],
-  },
-  {
-    title: "Animal Bike Stunt",
-    icon: animalBikeStuntIcon,
-    link: "https://play.google.com/store/apps/details?id=com.frolics.bike.stunt.racinggames&hl=en",
-    description: "Animal Bike Stunt Racing - Take on wild stunt tracks as you ride powerful animal-themed bikes! Perform crazy flips, soar over extreme ramps, and conquer challenging obstacle courses in this adrenaline-packed bike stunt adventure. Master each animal bike and prove yourself as the ultimate stunt rider!",
-    tech: ["Unity 3D", "C#"],
-  },
-]
+function mediaUrl(file: string) {
+  return `${process.env.PUBLIC_URL}/media/${file}`;
+}
+
+/**
+ * Gameplay clip that only plays while it is on screen, so several cards
+ * don't decode video at once. Without a clip it shows the game icon over a
+ * blurred copy of itself.
+ */
+function GameplayMedia({ project }: { project: GameProject }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [reduceMotion] = useState(prefersReducedMotion);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || reduceMotion || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {
+            // Autoplay can be blocked (e.g. data saver); the poster stays visible.
+          });
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [reduceMotion]);
+
+  if (!project.video) {
+    return (
+      <div
+        className="media placeholder"
+        style={{ "--cover": `url(${project.icon})` } as CSSProperties}
+      >
+        <img src={project.icon} alt={`${project.title} icon`} />
+      </div>
+    );
+  }
+
+  return (
+    <div className="media">
+      <video
+        ref={videoRef}
+        muted
+        loop
+        playsInline
+        preload={project.poster ? "none" : "metadata"}
+        poster={project.poster ? mediaUrl(project.poster) : undefined}
+        controls={reduceMotion}
+        aria-label={`${project.title} gameplay`}
+      >
+        <source src={mediaUrl(project.video)} type="video/mp4" />
+      </video>
+      <img className="media-icon" src={project.icon} alt="" />
+    </div>
+  );
+}
+
+function projectStats(project: GameProject) {
+  const stats: string[] = [];
+  if (project.role) stats.push(project.role);
+  if (project.team) stats.push(project.team);
+  if (project.downloads) stats.push(`${project.downloads} downloads`);
+  if (project.rating) stats.push(`★ ${project.rating}`);
+  return stats;
+}
+
+function GameCard({ project, index }: { project: GameProject; index: number }) {
+  const tiltRef = useTilt<HTMLElement>(10);
+  const stats = projectStats(project);
+  const highlights = project.highlights ?? [];
+  return (
+    <ScrollAnimation animateIn="gx-pop" duration={0.8} delay={(index % 3) * 120}>
+      <article className="project" ref={tiltRef}>
+        <GameplayMedia project={project} />
+        <div className="body">
+          <h3>{project.title}</h3>
+          {stats.length > 0 && (
+            <ul className="stats">
+              {stats.map((stat) => (
+                <li key={stat}>{stat}</li>
+              ))}
+            </ul>
+          )}
+          {highlights.length > 0 ? (
+            <>
+              <h4>What I built</h4>
+              <ul className="highlights">
+                {highlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p>{project.description}</p>
+          )}
+        </div>
+        <footer>
+          <ul className="tech-list">
+            {project.tech.map((tech) => (
+              <li key={tech}>{tech}</li>
+            ))}
+          </ul>
+          <a
+            className="store-link"
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={playStoreIcon} alt={`${project.title} on Google Play`} />
+          </a>
+        </footer>
+      </article>
+    </ScrollAnimation>
+  );
+}
 
 export function Project() {
   return (
     <Container id="project">
-      <h2>My Projects</h2>
+      <h2>
+        <RevealText text="My Games" underline />
+      </h2>
       <div className="projects">
-        {projects.map((project) => (
-          <ScrollAnimation animateIn="flipInX" key={project.title}>
-            <div className="project">
-              <header>
-                <div className="project-links">
-                  <a href={project.link} target="_blank" rel="noreferrer">
-                    <img src={playStoreIcon} alt={`${project.title} on Google Play`} />
-                  </a>
-                </div>
-              </header>
-              <div className="body" style={{ textAlign: "center" }}>
-                <img src={project.icon} alt={`${project.title} icon`} style={{ height: '100px' }} />
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-              </div>
-              <footer>
-                <ul className="tech-list">
-                  {project.tech.map((tech) => (
-                    <li key={tech}>{tech}</li>
-                  ))}
-                </ul>
-              </footer>
-            </div>
-          </ScrollAnimation>
+        {projects.map((project, index) => (
+          <GameCard key={project.title} project={project} index={index} />
         ))}
       </div>
     </Container>

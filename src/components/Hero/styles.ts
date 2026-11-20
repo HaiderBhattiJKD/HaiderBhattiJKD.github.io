@@ -37,6 +37,10 @@ export const Container = styled.section`
       font-size: 3rem;
       width: 3.5rem;
     }
+
+    a:hover img{
+      animation: gx-jump 0.5s ease-out;
+    }
   }
 
 
@@ -45,9 +49,26 @@ export const Container = styled.section`
     padding: 1.4rem 6rem;
   }
 
+  /* "press start" pulse ring around the main call to action */
+  .press-start::after{
+    content: "";
+    position: absolute;
+    inset: -0.4rem;
+    border-radius: inherit;
+    border: 0.2rem solid var(--green);
+    animation: gx-ring 2s ease-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes gx-ring{
+    0%{ opacity: 0.8; transform: scale(1); }
+    70%, 100%{ opacity: 0; transform: scale(1.18, 1.5); }
+  }
+
   .hero-image{
     img{
       max-width: 500px;
+      animation: gx-float 4s ease-in-out infinite;
     }
   }
 

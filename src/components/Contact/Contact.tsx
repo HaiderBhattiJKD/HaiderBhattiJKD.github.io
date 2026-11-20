@@ -2,6 +2,7 @@ import { Container } from "./styles";
 import emailIcon from "../../assets/email-icon.svg";
 import phoneIcon from "../../assets/phone-icon.svg"
 import { Form } from "../Form/Form";
+import { RevealText } from "../../fx/RevealText";
 
 
 export function Contact(){
@@ -9,7 +10,9 @@ export function Contact(){
   return(
     <Container id="contact">
       <header>
-        <h2>Contact</h2>
+        <h2>
+          <RevealText text="Contact" underline />
+        </h2>
         
       </header>
       <div className="contacts">

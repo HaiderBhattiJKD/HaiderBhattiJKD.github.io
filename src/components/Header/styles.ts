@@ -165,7 +165,35 @@ export const Container = styled.header`
     transform: translateX(-100%);
   }
 
-  @media (max-width: 960px){
+  .logo, nav a{
+    white-space: nowrap;
+  }
+
+  /* XP bar: fills along the bottom edge of the header as you scroll */
+  .xp-bar{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0.3rem;
+    background-color: rgba(128, 128, 128, 0.2);
+    pointer-events: none;
+  }
+
+  .xp-fill{
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), #7dffb0, var(--pink));
+    box-shadow: 0 0 0.8rem rgba(35, 206, 107, 0.7);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  @media (max-width: 1280px){
+    padding: 1.8rem 4rem;
+  }
+
+  /* below this the links don't fit on one line, so use the hamburger menu */
+  @media (max-width: 1100px){
     padding: 1.8rem 3rem;
 
     .menu{
