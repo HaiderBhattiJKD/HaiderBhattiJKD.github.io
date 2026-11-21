@@ -34,6 +34,9 @@ export function Hero() {
     { value: 'Unity · C#', label: 'Main stack' },
   ]
 
+  // platforms you've built and shipped games for
+  const platforms = ['Android', 'iOS', 'Apple TV', 'macOS']
+
   return (
     <Container id="home">
       <div className="hero-text">
@@ -56,13 +59,23 @@ export function Hero() {
             </li>
           ))}
         </ul>
-        <ScrollAnimation offset={0} animateIn="gx-pop" delay={1.5 * 1000} duration={0.7}>
+        <ScrollAnimation offset={0} animateIn="gx-glitch-in" delay={1.45 * 1000} duration={0.6}>
+          <div className="platforms">
+            <span className="platforms-label">Shipped on</span>
+            <ul>
+              {platforms.map((platform) => (
+                <li key={platform}>{platform}</li>
+              ))}
+            </ul>
+          </div>
+        </ScrollAnimation>
+        <ScrollAnimation offset={0} animateIn="gx-pop" delay={1.6 * 1000} duration={0.7}>
           <div className="actions">
             <NavHashLink smooth to="#project" className="button press-start">▶ Play my games</NavHashLink>
             <NavHashLink smooth to="#contact" className="button secondary">Contact</NavHashLink>
           </div>
         </ScrollAnimation>
-        <ScrollAnimation offset={0} animateIn="gx-pop" delay={1.6 * 1000} duration={0.7}>
+        <ScrollAnimation offset={0} animateIn="gx-pop" delay={1.75 * 1000} duration={0.7}>
       <div className="social-media"><a
         href="https://www.linkedin.com/in/haider-bhatti-38680819b/"
         target="_blank"

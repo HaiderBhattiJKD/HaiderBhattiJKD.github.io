@@ -55,6 +55,16 @@ export const Container = styled.div`
       input,textarea{
         width: 100%;
       }
+
+      /* bigger tap target on phones */
+      button{
+        width: 100%;
+        padding: 1.4rem;
+      }
+    }
+
+    h2{
+      font-size: 2.2rem;
     }
   }
 `

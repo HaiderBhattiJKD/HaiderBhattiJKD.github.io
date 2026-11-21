@@ -36,7 +36,8 @@ export function Main() {
         options={{
           "fullScreen": {
             "enable": true,
-            "zIndex": 1
+            // behind the page content, so icons never cover text or buttons
+            "zIndex": -1
           },
           "detectRetina": true,
           "fpsLimit": 60,

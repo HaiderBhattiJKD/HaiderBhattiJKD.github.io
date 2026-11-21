@@ -50,54 +50,37 @@ export const Container = styled.section`
 
   .about-image{
     text-align: center;
-   img{
-     margin-top: 2rem;
-     margin-left: 10rem;
-     width: 45%;
-     filter: grayscale(0);
-     transition: filter 0.5s;
-     &:hover{
-       filter: grayscale(0);
-     }
-   }
-  }
 
-  @media only screen and (max-width: 480px) {
-    .about-image {
-      max-width: 100%;
-      margin-top: 4rem;
-      img{
-        margin-top: 2rem;
-        width: 100%;
-        filter: grayscale(0);
-        transition: filter 0.5s;
-        &:hover{
-          filter: grayscale(0);
-        }
+    img{
+      margin-top: 2rem;
+      margin-left: 10rem;
+      width: 45%;
     }
   }
 
+  /* one column: text, then the photo centred underneath */
   @media (max-width: 960px){
     display: block;
     text-align: center;
-    
+
     .hard-skills{
       justify-content: center;
     }
+
     .about-image{
-      display: flex;
-      max-width: 100%;
+      margin-top: 4rem;
+
       img{
-        margin-top: 2rem;
-        width: 100%;
-        filter: grayscale(0);
-        transition: filter 0.5s;
-        &:hover{
-          filter: grayscale(0);
-        }
+        margin: 0 auto;
+        width: min(32rem, 80%);
+      }
     }
-    
-    
   }
 
+  @media (max-width: 480px){
+    p{
+      font-size: 1.6rem;
+      letter-spacing: 0.04rem;
+    }
+  }
 `

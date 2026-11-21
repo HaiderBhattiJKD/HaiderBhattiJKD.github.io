@@ -278,6 +278,14 @@ export const Container = styled.section`
 
     .card{
       padding: 1.8rem;
+
+      h3{
+        font-size: 2rem;
+      }
+
+      .company{
+        font-size: 1.4rem;
+      }
     }
   }
 `

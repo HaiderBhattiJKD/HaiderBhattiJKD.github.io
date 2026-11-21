@@ -67,6 +67,40 @@ export const Container = styled.section`
     }
   }
 
+  /* ----- "Shipped on" platform badges ----- */
+  .platforms{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.2rem;
+    margin-top: 1.6rem;
+
+    .platforms-label{
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    ul{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    li{
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.04rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      color: var(--secondary);
+      background-color: rgba(var(--secondary-rgb), 0.1);
+      border: 1px solid rgba(var(--secondary-rgb), 0.45);
+      white-space: nowrap;
+    }
+  }
+
   /* ----- buttons ----- */
   .actions{
     display: flex;
@@ -148,6 +182,26 @@ export const Container = styled.section`
 
   @media (max-width: 600px){
     padding-top: 12rem;
+
+    /* three stat chips side by side */
+    .stats{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+
+      li > div{
+        padding: 0.9rem 1rem;
+      }
+
+      .value{
+        font-size: 1.7rem;
+      }
+
+      .label{
+        font-size: 0.95rem;
+        letter-spacing: 0.06rem;
+      }
+    }
 
     .actions .button{
       flex: 1 1 auto;

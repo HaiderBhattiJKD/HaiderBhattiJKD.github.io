@@ -248,5 +248,13 @@ export const Container = styled.header`
       }
     }
   }
-  
+
+  /* phones: smaller logo and tighter edges (after the rule above so it wins) */
+  @media (max-width: 600px){
+    padding: 1.4rem 2.4rem;
+
+    .logo{
+      font-size: 2.4rem;
+    }
+  }
 `

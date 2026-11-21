@@ -5,6 +5,11 @@ import springLancerIcon from "../assets/Lancer.png"
 import bikeRacingMasterIcon from "../assets/BRM.png"
 import formulaRacingIcon from "../assets/F1Racing.png"
 import animalBikeStuntIcon from "../assets/AnimalBikeStunt.png"
+import goKartRacingIcon from "../assets/GoKartRacing.jpg"
+import coloringAsmrIcon from "../assets/ColoringASMR.jpg"
+import idleFightingHeroIcon from "../assets/IdleFightingHero.png"
+import cleaningMakeoverIcon from "../assets/CleaningMakeover.png"
+import monkeyEscapeIcon from "../assets/MonkeyEscape.png"
 
 export type GameProject = {
   title: string
@@ -45,7 +50,14 @@ export const projects: GameProject[] = [
     icon: rider3dIcon,
     link: "https://play.google.com/store/apps/details?id=com.ffgames.motoercycle.traffic.racer.bikegames.rider.motobikeracing3d&hl=en",
     description: "Highway Bike Racing - Experience the rush as you weave through traffic, hit insane speeds with NOS, and push your limits to dominate the highway in this adrenaline-packed 3D bike racing game!",
-    tech: ["Unity 3D", "C#"],
+    tech: ["Unity 3D", "C#", "iOS"],
+  },
+  {
+    title: "GoKart Racing",
+    icon: goKartRacingIcon,
+    link: "https://play.google.com/store/apps/details?id=com.kart.racing.rider.driving.offline.cargames&hl=en",
+    description: "Go Kart Racing - Hit the track in fast, wheel-to-wheel kart races! Drift through tight corners, outpace rival racers, and race offline anytime in this action-packed go-kart racing game.",
+    tech: ["Unity 3D", "C#", "iOS"],
   },
   {
     title: "Bike Stunt Legends",
@@ -66,7 +78,7 @@ export const projects: GameProject[] = [
     icon: springLancerIcon,
     link: "https://play.google.com/store/apps/details?id=com.tf.springbolt.smash&hl=en",
     description: "Lancer Strike - Aim, throw, and smash your way through enemies in this fast-paced spear-flinging action game! Master precision shots, break obstacles, and conquer challenging levels as you rise to become the ultimate lancer warrior.",
-    tech: ["Unity 3D", "C#"],
+    tech: ["Unity 3D", "C#", "iOS"],
   },
   {
     title: "Bike Racing Master",
@@ -87,6 +99,34 @@ export const projects: GameProject[] = [
     icon: animalBikeStuntIcon,
     link: "https://play.google.com/store/apps/details?id=com.frolics.bike.stunt.racinggames&hl=en",
     description: "Animal Bike Stunt Racing - Take on wild stunt tracks as you ride powerful animal-themed bikes! Perform crazy flips, soar over extreme ramps, and conquer challenging obstacle courses in this adrenaline-packed bike stunt adventure. Master each animal bike and prove yourself as the ultimate stunt rider!",
+    tech: ["Unity 3D", "C#"],
+  },
+  {
+    title: "Coloring ASMR",
+    icon: coloringAsmrIcon,
+    link: "https://play.google.com/store/apps/details?id=com.ai.draw.coloring.games.asmr&hl=en",
+    description: "Coloring ASMR - A relaxing drawing and painting game for kids! Bring pictures to life with color across 120+ fun levels, and enjoy satisfying ASMR sounds with every stroke.",
+    tech: ["Unity 3D", "C#", "iOS"],
+  },
+  {
+    title: "Idle Fighting Hero",
+    icon: idleFightingHeroIcon,
+    link: "https://play.google.com/store/apps/details?id=com.fv.idle.fighting.hero.simulator.clicker&hl=en",
+    description: "Idle Fighting Hero - Tap, train, and fight your way to the top! Build up your strength in the gym, collect offline rewards, and level up your fighter in this idle clicker game until you become the champion.",
+    tech: ["Unity 3D", "C#", "iOS"],
+  },
+  {
+    title: "Cleaning Makeover",
+    icon: cleaningMakeoverIcon,
+    link: "https://play.google.com/store/apps/details?id=com.tf.makeover.asmr.game&hl=en",
+    description: "Cleaning Makeover - Scrub away the mess and make everything shine again! Enjoy deep cleaning, satisfying makeovers, and relaxing ASMR restoration in this calming makeover game.",
+    tech: ["Unity 3D", "C#"],
+  },
+  {
+    title: "Monkey Escape",
+    icon: monkeyEscapeIcon,
+    link: "https://play.google.com/store/apps/details?id=com.tf.monkey.escape.puzzle&hl=en",
+    description: "Monkey Escape - Help the monkey break free and get away from the police! Solve clever puzzles, sneak past the guards, and reach the exit in this fun escape puzzle game.",
     tech: ["Unity 3D", "C#"],
   },
 ]
