@@ -1,19 +1,23 @@
 {
   "files": {
-    "main.js": "/static/js/main.ae29db27.js",
+    "main.js": "/static/js/main.fb678fe1.js",
     "static/media/Hello.gif": "/static/media/Hello.d93720933c608f6178fb.gif",
     "static/media/HaiderAliBhatti.png": "/static/media/HaiderAliBhatti.7c646a0a1dd93d60ea73.png",
     "static/media/Resume.pdf": "/static/media/Resume.dffbfd1785cb28df78a4.pdf",
+    "static/media/CleaningMakeover.png": "/static/media/CleaningMakeover.0fb1fd6d7c4b9608367f.png",
+    "static/media/MonkeyEscape.png": "/static/media/MonkeyEscape.162f67c784c8227d6470.png",
+    "static/media/IdleFightingHero.png": "/static/media/IdleFightingHero.6586f1d35d22592c730d.png",
     "static/media/Rider3D.png": "/static/media/Rider3D.59bc4a9da3e2a7ce0ef6.png",
     "static/media/Lancer.png": "/static/media/Lancer.35338e65e527abe1c6a9.png",
+    "static/media/GoKartRacing.jpg": "/static/media/GoKartRacing.059105cb3978737292a1.jpg",
     "static/media/C++.png": "/static/media/C++.24a8f93854ab092f17a7.png",
+    "static/media/ColoringASMR.jpg": "/static/media/ColoringASMR.7006634e7db593731eb3.jpg",
     "static/media/UBS.png": "/static/media/UBS.5ce4286d172d059272db.png",
     "static/media/BikeStunt.png": "/static/media/BikeStunt.1ac1f6eec74488430de3.png",
     "static/media/Unity.png": "/static/media/Unity.43a9b85934639cd3cbf0.png",
     "static/media/F1Racing.png": "/static/media/F1Racing.d09733e32b85b663e69d.png",
     "static/media/AnimalBikeStunt.png": "/static/media/AnimalBikeStunt.8b188436b758dd8b20c1.png",
     "static/media/BRM.png": "/static/media/BRM.ddb63a4683ec646dee14.png",
-    "static/media/illustration.svg": "/static/media/illustration.847a876199e065d61ad1dde66f029b88.svg",
     "static/media/whatsapp.svg": "/static/media/whatsapp.459dad86534ca5699520ed770f3ce605.svg",
     "static/media/PlayStoreIcon.svg": "/static/media/PlayStoreIcon.42c50b016694677639b2f1121041be5f.svg",
     "static/media/instagram.svg": "/static/media/instagram.e9d6b5424508db6397a027a4e0fe0dd0.svg",
@@ -22,9 +26,9 @@
     "static/media/github.svg": "/static/media/github.d344c0fc70ddfb6de253ddc40adcb086.svg",
     "static/media/email-icon.svg": "/static/media/email-icon.a5dd245e834641e729e77e40309039c4.svg",
     "static/media/linkedin.svg": "/static/media/linkedin.4f00d78f67f451cf01173f7418aa186f.svg",
-    "main.ae29db27.js.map": "/static/js/main.ae29db27.js.map"
+    "main.fb678fe1.js.map": "/static/js/main.fb678fe1.js.map"
   },
   "entrypoints": [
-    "static/js/main.ae29db27.js"
+    "static/js/main.fb678fe1.js"
   ]
 }
