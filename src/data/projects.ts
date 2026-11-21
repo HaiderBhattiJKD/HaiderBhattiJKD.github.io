@@ -32,6 +32,13 @@ export type GameProject = {
   highlights?: string[]
 }
 
+/**
+ * Gameplay montage for the handheld screen at the top of the page. Put the
+ * files in public/media and fill these in, e.g. { video: "showreel.mp4",
+ * poster: "showreel.jpg" }. Until then the screen cycles through your games.
+ */
+export const showreel: { video?: string; poster?: string } = {}
+
 export const projects: GameProject[] = [
   {
     title: "Rider 3D",

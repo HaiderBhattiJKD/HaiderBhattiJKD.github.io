@@ -27,14 +27,22 @@ export const Container = styled.header`
       font-family: 'Red Hat Display', sans-serif;
       font-weight: 500;
       text-transform: uppercase;
-      transition: filter 0.25s;
-
-      &.button{
-        padding: 0.6rem 2rem;
-      }
+      transition: color 0.2s;
 
       &:hover{
-        filter: brightness(0.6);
+        color: var(--primary);
+      }
+
+      /* the Resume button keeps dark text on cyan, and its own press effect */
+      &.button{
+        padding: 0.6rem 2rem;
+        color: var(--on-primary);
+        font-weight: 700;
+        transition: filter 0.2s, transform 0.1s, box-shadow 0.1s;
+
+        &:hover{
+          color: var(--on-primary);
+        }
       }
     }
 

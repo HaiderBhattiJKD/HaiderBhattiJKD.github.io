@@ -6,12 +6,27 @@ import { Contact } from "../Contact/Contact";
 import { Project } from "../Project/Project";
 import { Experience } from "../Experience/Experience";
 import cSharpIcon from "../../assets/C#.png";
-import unityIcon from "../../assets/Unity.png";
+import unityIcon from "../../assets/UnityWhite.png";
 import vSCodeIcon from "../../assets/VSCode.png";
 import visualStudioIcon from "../../assets/VisualStudio.png";
 import githubIcon from "../../assets/GithubSmall.png";
-import unrealIcon from "../../assets/Unreal.png";
 import cPlusPlusIcon from "../../assets/C++.png";
+import { projects } from "../../data/projects";
+
+/**
+ * Icons that float in the background: tools, plus every game's icon.
+ * Each particle picks one at random, so Unity is listed twice to show up more often.
+ */
+const floatingIcons = [
+  unityIcon,
+  unityIcon,
+  cSharpIcon,
+  vSCodeIcon,
+  visualStudioIcon,
+  githubIcon,
+  cPlusPlusIcon,
+  ...projects.map((project) => project.icon),
+].map((src) => ({ src, width: 20, height: 20 }));
 
 export function Main() {
   return (
@@ -113,8 +128,8 @@ export function Main() {
                 "enable": true,
                 "area": 800
               },
-              "limit": 20,
-              "value": 15,
+              "limit": 30,
+              "value": 22,
             },
             "opacity": {
               "animation": {
@@ -144,43 +159,7 @@ export function Main() {
                 "value": "*",
                 "weight": "400"
               },
-              "image": [
-                {
-                  "src": unityIcon,
-                  "width": 20,
-                  "height": 20
-                },
-                {
-                  "src": cSharpIcon,
-                  "width": 20,
-                  "height": 20
-                },
-                {
-                  "src": vSCodeIcon,
-                  "width": 20,
-                  "height": 20
-                },
-                {
-                  "src": visualStudioIcon,
-                  "width": 20,
-                  "height": 20
-                },
-                {
-                  "src": githubIcon,
-                  "width": 20,
-                  "height": 20
-                },
-                {
-                  "src": unrealIcon,
-                  "width": 20,
-                  "height": 20
-                },
-                {
-                  "src": cPlusPlusIcon,
-                  "width": 20,
-                  "height": 20
-                },
-              ],
+              "image": floatingIcons,
               "polygon": {
                 "sides": 5
               },

@@ -88,7 +88,13 @@ function GameCard({ project, index }: { project: GameProject; index: number }) {
       <article className="project" ref={tiltRef}>
         <GameplayMedia project={project} />
         <div className="body">
-          <h3>{project.title}</h3>
+          <h3>
+            {/* this link stretches over the whole card (see .card-link), so a click anywhere opens the game */}
+            <a className="card-link" href={project.link} target="_blank" rel="noreferrer">
+              {project.title}
+              <span className="sr-only"> on Google Play</span>
+            </a>
+          </h3>
           {stats.length > 0 && (
             <ul className="stats">
               {stats.map((stat) => (
@@ -115,14 +121,10 @@ function GameCard({ project, index }: { project: GameProject; index: number }) {
               <li key={tech}>{tech}</li>
             ))}
           </ul>
-          <a
-            className="store-link"
-            href={project.link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={playStoreIcon} alt={`${project.title} on Google Play`} />
-          </a>
+          {/* just a visual badge now: the whole card is the link */}
+          <span className="store-link" aria-hidden="true">
+            <img src={playStoreIcon} alt="" />
+          </span>
         </footer>
       </article>
     </ScrollAnimation>

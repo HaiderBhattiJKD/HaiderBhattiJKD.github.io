@@ -81,6 +81,16 @@ Every field except `title`, `icon`, `link`, `description` and `tech` is optional
 },
 ```
 
+### Hero showreel
+
+The handheld console at the top of the page cycles through your games. To make it play a gameplay montage instead, put the clip in `public/media/` and set `showreel` in [`src/data/projects.ts`](src/data/projects.ts):
+
+```ts
+export const showreel = { video: "showreel.mp4", poster: "showreel.jpg" }
+```
+
+The screen is 4:3, so frame the important action in the middle of the clip.
+
 ### Gameplay clips
 
 Put clips and their poster frames in `public/media/`. Without a clip, the card shows the game icon instead.

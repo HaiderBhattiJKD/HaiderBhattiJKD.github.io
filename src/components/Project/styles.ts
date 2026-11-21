@@ -55,6 +55,26 @@ export const Container = styled.section`
         .media.placeholder img{
           animation: gx-jump 0.6s ease-out;
         }
+
+        .store-link{
+          transform: scale(1.15);
+        }
+
+        .card-link{
+          color: var(--primary);
+        }
+      }
+
+      /* keyboard focus on the card's link highlights the whole card */
+      &:focus-within{
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.3rem rgba(var(--primary-rgb), 0.5);
+      }
+
+      /* with reduced motion the clip shows controls; keep them above the card link */
+      .media video[controls]{
+        position: relative;
+        z-index: 2;
       }
     }
 
@@ -112,6 +132,20 @@ export const Container = styled.section`
       h3{
         font-size: 2.4rem;
         margin-bottom: 1.2rem;
+      }
+
+      /* stretched link: its invisible ::before covers the whole card */
+      .card-link{
+        color: inherit;
+        outline: none;
+
+        &::before{
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          border-radius: inherit;
+        }
       }
 
       h4{
@@ -184,10 +218,6 @@ export const Container = styled.section`
       .store-link{
         display: flex;
         transition: transform 0.2s;
-
-        &:hover{
-          transform: scale(1.1);
-        }
 
         img{
           width: 3.2rem;

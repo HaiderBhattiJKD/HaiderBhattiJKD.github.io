@@ -5,33 +5,7 @@ import { experience, education } from "../../data/experience";
 import { projects } from "../../data/projects";
 import { useInView, useTilt } from "../../fx/motion";
 import { RevealText } from "../../fx/RevealText";
-
-const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
-
-/** "Oct 2022" -> months since year 0, or undefined if it can't be read. */
-function toMonthIndex(value: string): number | undefined {
-  const match = /^([a-z]{3})[a-z]*\.?\s+(\d{4})$/i.exec(value.trim());
-  if (!match) return undefined;
-  const month = MONTHS.indexOf(match[1].toLowerCase());
-  if (month === -1) return undefined;
-  return Number(match[2]) * 12 + month;
-}
-
-/** Length of a job like LinkedIn shows it, counting both the start and end month. */
-function duration(start: string, end?: string): string | undefined {
-  const from = toMonthIndex(start);
-  const now = new Date();
-  const to = end ? toMonthIndex(end) : now.getFullYear() * 12 + now.getMonth();
-  if (from === undefined || to === undefined || to < from) return undefined;
-
-  const total = to - from + 1;
-  const years = Math.floor(total / 12);
-  const months = total % 12;
-  const parts: string[] = [];
-  if (years) parts.push(`${years} yr${years > 1 ? "s" : ""}`);
-  if (months) parts.push(`${months} mo${months > 1 ? "s" : ""}`);
-  return parts.join(" ");
-}
+import { duration } from "../../data/dates";
 
 function storeLink(title: string) {
   return projects.find((project) => project.title === title)?.link;
